@@ -11,7 +11,12 @@
     "sync-check": "node cv-sync-check.mjs",
     "update:check": "node update-system.mjs check",
     "update": "node update-system.mjs apply",
-    "rollback": "node update-system.mjs rollback"
+    "rollback": "node update-system.mjs rollback",
+    "profile": "node switch-profile.mjs",
+    "profile:new": "node switch-profile.mjs new",
+    "profile:switch": "node switch-profile.mjs switch",
+    "profile:list": "node switch-profile.mjs list",
+    "profile:status": "node switch-profile.mjs status"
   },
   "keywords": ["ai", "job-search", "claude-code", "career", "automation"],
   "author": "Santiago Fernández de Valderrama <hi@santifer.io> (https://santifer.io)",

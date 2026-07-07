@@ -194,6 +194,95 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 
 ---
 
+## Profiles (Multi-User Support)
+
+career-ops supports multiple independent profiles — each profile is a fully self-contained job search account with its own CV, target roles, portals, tracker, and reports. Use this to manage your own search and help others simultaneously.
+
+### Concept: Profile = Account = Search Criteria
+
+A profile defines:
+- **Who** is searching (cv.md, config/profile.yml)
+- **What** they're looking for (target_roles, archetypes in _profile.md)
+- **Where** to search (portals.yml, title_filter keywords driven by their target roles)
+
+Each profile lives at `profiles/<name>/` and mirrors the root layout:
+```
+profiles/
+  kelechi/
+    cv.md                        ← their CV
+    config/profile.yml           ← their details and target roles
+    modes/_profile.md            ← their archetypes and narrative
+    portals.yml                  ← portals tailored to their field
+    data/applications.md         ← their tracker
+    reports/                     ← their evaluation reports
+    output/                      ← their generated PDFs
+    jds/                         ← their saved JDs
+    interview-prep/story-bank.md ← their STAR stories
+  friend-name/
+    ...                          ← fully separate, zero overlap
+```
+
+### Profile Commands
+
+```bash
+node switch-profile.mjs new kelechi         # Create profile + switch to it
+node switch-profile.mjs new friend-name     # Create another profile
+node switch-profile.mjs switch kelechi      # Switch active profile
+node switch-profile.mjs list                # See all profiles
+node switch-profile.mjs status              # Show active profile details
+
+# npm shortcuts
+npm run profile:new -- kelechi
+npm run profile:switch -- friend-name
+npm run profile:list
+npm run profile:status
+```
+
+### How Claude Should Handle Profiles
+
+**On session start:** After the update check, also run:
+```bash
+node switch-profile.mjs status
+```
+Show the active profile name so the user knows whose context is loaded.
+
+**When the user says "help [name] search for jobs" or "switch to [name]'s profile":**
+1. Run `node switch-profile.mjs list` to confirm the profile exists
+2. If it doesn't exist, create it: `node switch-profile.mjs new <name>`
+3. Run `node switch-profile.mjs switch <name>` to activate
+4. Load cv.md, config/profile.yml, modes/_profile.md from `profiles/<name>/`
+5. Enter onboarding if their profile isn't set up yet
+
+**When writing files for an active profile**, ALL paths resolve to `profiles/<name>/`:
+- `profiles/<name>/cv.md` (not root `cv.md`)
+- `profiles/<name>/config/profile.yml`
+- `profiles/<name>/modes/_profile.md`
+- `profiles/<name>/portals.yml`
+- `profiles/<name>/data/applications.md`
+- `profiles/<name>/reports/{###}-company-YYYY-MM-DD.md`
+- `profiles/<name>/output/cv-candidate-company.pdf`
+
+**The root files (cv.md, config/profile.yml, etc.) are only used in single-profile / legacy mode** — when no `.active-profile` is set. Don't write to root files when a profile is active.
+
+**Scripts are already profile-aware:** All Node scripts (verify, merge, normalize, dedup, sync-check) automatically read `.active-profile` and resolve to the right directory. You can also force a specific profile:
+```bash
+node verify-pipeline.mjs --profile kelechi
+node merge-tracker.mjs --profile friend-name
+```
+
+### Portals per Profile
+
+Each profile has its own `portals.yml`. When setting up a new profile, **tune the `title_filter.positive` keywords to match their target roles**:
+
+- Targeting frontend engineering → add: "React", "Vue", "Frontend", "UI Engineer"
+- Targeting product design → add: "UX", "Product Designer", "Design Lead"
+- Targeting data engineering → add: "Data Engineer", "dbt", "Spark", "ETL", "Pipeline"
+- Targeting devops/SRE → add: "DevOps", "SRE", "Platform", "Kubernetes", "Infrastructure"
+
+Remove or disable the default AI/ML keywords if they don't fit the profile's field. This is what makes the CV an "account" — the portals adapt to the person.
+
+---
+
 ## Ethical Use -- CRITICAL
 
 **This system is designed for quality, not quantity.** The goal is to help the user find and apply to roles where there is a genuine match -- not to spam companies with mass applications.

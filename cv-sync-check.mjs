@@ -11,11 +11,11 @@
  */
 
 import { readFileSync, existsSync, statSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { join } from 'path';
+import { resolveProfileRoot, getActiveProfileName } from './profile-resolver.mjs';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const projectRoot = __dirname;
+const projectRoot = resolveProfileRoot();
+const profileLabel = getActiveProfileName() ? `[profile: ${getActiveProfileName()}] ` : '';
 
 const warnings = [];
 const errors = [];
@@ -82,7 +82,7 @@ if (existsSync(digestPath)) {
 }
 
 // Output results
-console.log('\n=== career-ops sync check ===\n');
+console.log(`\n=== career-ops sync check ${profileLabel}===\n`);
 
 if (errors.length === 0 && warnings.length === 0) {
   console.log('All checks passed.');

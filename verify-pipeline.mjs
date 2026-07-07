@@ -16,8 +16,10 @@
 
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
+import { resolveProfileRoot, getActiveProfileName } from './profile-resolver.mjs';
 
-const CAREER_OPS = new URL('.', import.meta.url).pathname;
+const CAREER_OPS = resolveProfileRoot();
+const _profileLabel = getActiveProfileName() ? ` [profile: ${getActiveProfileName()}]` : '';
 // Support both layouts: data/applications.md (boilerplate) and applications.md (original)
 const APPS_FILE = existsSync(join(CAREER_OPS, 'data/applications.md'))
   ? join(CAREER_OPS, 'data/applications.md')
@@ -70,7 +72,7 @@ for (const line of lines) {
   });
 }
 
-console.log(`\n📊 Checking ${entries.length} entries in applications.md\n`);
+console.log(`\n📊 Checking ${entries.length} entries in applications.md${_profileLabel}\n`);
 
 // --- Check 1: Canonical statuses ---
 let badStatuses = 0;

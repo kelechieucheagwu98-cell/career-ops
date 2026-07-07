@@ -16,8 +16,10 @@
 
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, renameSync, existsSync } from 'fs';
 import { join, basename } from 'path';
+import { resolveProfileRoot, getActiveProfileName } from './profile-resolver.mjs';
 
-const CAREER_OPS = new URL('.', import.meta.url).pathname;
+const CAREER_OPS = resolveProfileRoot();
+const _profileLabel = getActiveProfileName() ? ` [profile: ${getActiveProfileName()}]` : '';
 // Support both layouts: data/applications.md (boilerplate) and applications.md (original)
 const APPS_FILE = existsSync(join(CAREER_OPS, 'data/applications.md'))
   ? join(CAREER_OPS, 'data/applications.md')

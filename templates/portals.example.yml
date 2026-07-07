@@ -717,3 +717,164 @@ tracked_companies:
     api: https://boards-api.greenhouse.io/v1/boards/amplemarket/jobs
     notes: "Lisbon PT / Remote. AI-native sales platform."
     enabled: true
+
+  # ============================================================
+  # -- Africa & Nigeria ecosystem (supplementary) --
+  # These companies are set to enabled: false by default.
+  # Activate selectively based on your target market.
+  # Primary job search remains global (companies above).
+  # ============================================================
+
+  # -- Nigerian tech unicorns & scale-ups --
+
+  - name: Flutterwave
+    careers_url: https://flutterwave.com/us/careers
+    scan_method: websearch
+    scan_query: 'site:flutterwave.com/us/careers "engineer" OR "product" OR "AI" OR "data"'
+    notes: "Lagos NG / SF / London. Payments infrastructure. ~$3B valuation."
+    enabled: false
+
+  - name: Paystack
+    careers_url: https://paystack.com/careers
+    scan_method: websearch
+    scan_query: '"paystack" careers "engineer" OR "product" OR "data" site:paystack.com'
+    notes: "Lagos NG / Remote. Stripe-acquired payments. Strong engineering culture."
+    enabled: false
+
+  - name: Moniepoint
+    careers_url: https://moniepoint.com/ng/careers
+    scan_method: websearch
+    scan_query: '"moniepoint" careers "engineer" OR "product manager" OR "AI" OR "data"'
+    notes: "Lagos NG. B2B fintech unicorn. Fastest-growing bank in Nigeria."
+    enabled: false
+
+  - name: Kuda Bank
+    careers_url: https://kuda.com/careers
+    scan_method: websearch
+    scan_query: '"kuda" careers "engineer" OR "product" OR "data" OR "AI"'
+    notes: "Lagos NG / London. Digital bank, 7M+ users."
+    enabled: false
+
+  - name: PiggyVest
+    careers_url: https://piggyvest.com/careers
+    scan_method: websearch
+    scan_query: '"piggyvest" careers "engineer" OR "product" OR "design"'
+    notes: "Lagos NG. Savings & investment app. 5M+ users."
+    enabled: false
+
+  - name: Andela
+    careers_url: https://job-boards.greenhouse.io/andela
+    api: https://boards-api.greenhouse.io/v1/boards/andela/jobs
+    notes: "Remote-first. African tech talent network. Engineering + product roles."
+    enabled: false
+
+  - name: Interswitch
+    careers_url: https://interswitchgroup.com/careers
+    scan_method: websearch
+    scan_query: '"interswitch" careers "engineer" OR "product" OR "technology"'
+    notes: "Lagos NG. Payment processing giant. Unicorn."
+    enabled: false
+
+  - name: OPay
+    careers_url: https://opay-internet.com/about/careers
+    scan_method: websearch
+    scan_query: '"opay" careers "engineer" OR "product" OR "data" site:opay-internet.com'
+    notes: "Lagos NG. Mobile payments + financial services. Opera-backed."
+    enabled: false
+
+  # -- Pan-African tech companies --
+
+  - name: Chipper Cash
+    careers_url: https://chippercash.com/careers
+    scan_method: websearch
+    scan_query: '"chipper cash" careers "engineer" OR "product" OR "data" OR "AI"'
+    notes: "Remote / Pan-Africa. Cross-border payments across 7 African markets."
+    enabled: false
+
+  - name: Wave Mobile Money
+    careers_url: https://jobs.lever.co/wave
+    notes: "Dakar SN / Remote. Mobile money for Francophone Africa. YC + Series A."
+    enabled: false
+
+  - name: Jumia
+    careers_url: https://group.jumia.com/careers
+    scan_method: websearch
+    scan_query: '"jumia" careers "engineer" OR "product" OR "data" OR "technology"'
+    notes: "Lagos NG (HQ) / pan-Africa. E-commerce. Only African tech company on NYSE."
+    enabled: false
+
+  - name: Yoco
+    careers_url: https://yoco.com/za/careers/
+    scan_method: websearch
+    scan_query: '"yoco" careers "engineer" OR "product" OR "AI" OR "data"'
+    notes: "Cape Town ZA. SMB payments. $83M Series C."
+    enabled: false
+
+  - name: Pezesha
+    careers_url: https://pezesha.com/careers
+    scan_method: websearch
+    scan_query: '"pezesha" careers "engineer" OR "product" OR "finance"'
+    notes: "Nairobi KE. Embedded finance for SMEs."
+    enabled: false
+
+  # -- African tech media & talent platforms --
+
+  - name: Turing
+    careers_url: https://job-boards.greenhouse.io/turing
+    api: https://boards-api.greenhouse.io/v1/boards/turing/jobs
+    notes: "Remote-first. Matches African/global engineers with US tech companies."
+    enabled: false
+
+  - name: Talent Plus Africa
+    careers_url: https://talentplusafrica.com/jobs
+    scan_method: websearch
+    scan_query: 'site:talentplusafrica.com "engineer" OR "product" OR "AI" OR "data"'
+    notes: "Pan-Africa. Tech talent placement. Good for senior roles."
+    enabled: false
+
+  # -- Remote-first global companies with Africa-friendly hiring --
+
+  - name: Remote.com
+    careers_url: https://job-boards.greenhouse.io/remotecom
+    api: https://boards-api.greenhouse.io/v1/boards/remotecom/jobs
+    notes: "Remote-first. Ironically hires globally — strong Africa-friendly policy."
+    enabled: false
+
+  - name: Deel
+    careers_url: https://job-boards.greenhouse.io/deel
+    api: https://boards-api.greenhouse.io/v1/boards/deel/jobs
+    notes: "Remote-first. Global payroll/HR. Actively hires across Africa."
+    enabled: false
+
+  - name: GitLab
+    careers_url: https://job-boards.greenhouse.io/gitlab
+    api: https://boards-api.greenhouse.io/v1/boards/gitlab/jobs
+    notes: "100% remote. No location restrictions. Strong engineering culture."
+    enabled: false
+
+  - name: Automattic (WordPress)
+    careers_url: https://automattic.com/work-with-us/
+    scan_method: websearch
+    scan_query: 'site:automattic.com/work-with-us "engineer" OR "product" OR "data"'
+    notes: "100% distributed. Hires everywhere including Africa."
+    enabled: false
+
+  # -- African job board search queries (Level 3 discovery) --
+  # Add to search_queries section if you want broad African market discovery.
+  # These are commented out by default — uncomment and move to search_queries to activate.
+
+  # - name: Jobberman — Tech Roles
+  #   query: 'site:jobberman.com "software engineer" OR "product manager" OR "data analyst" OR "AI"'
+  #   enabled: false
+
+  # - name: MyJobMag — Tech & Digital
+  #   query: 'site:myjobmag.com "engineer" OR "product" OR "technology" OR "AI" OR "data"'
+  #   enabled: false
+
+  # - name: LinkedIn Nigeria — Senior Tech
+  #   query: 'site:linkedin.com/jobs "Nigeria" OR "Lagos" OR "Abuja" "senior" "engineer" OR "product manager" OR "AI"'
+  #   enabled: false
+
+  # - name: African Talent Network — Remote Tech
+  #   query: '"remote" "Africa" OR "Nigeria" OR "Kenya" OR "Ghana" "senior engineer" OR "product manager" OR "AI engineer"'
+  #   enabled: false
